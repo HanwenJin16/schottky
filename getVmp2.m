@@ -6,12 +6,12 @@ function Vmp = getVmp2(Ip, SBH, meff, kT, h, el);
   Nx = length(xs);
   f = (1 + xs) .* exp(xs) - (1 + Ip/I0); # solve Eq 3 from Pulfrey paper
 
-  %# find f=0 points:
-  prodf = f(1:Nx-1) .* f(2:Nx);
-  [a,b] = min(prodf);
-  xmin = ( xs(b) + xs(b+1) )/2;
+ %# find f=0 points:
+  [a,b] = min(abs(f));
+  xmin = xs(b)
   Vmp = kT/el * xmin;
-  
   printf("Vmp (in V): %f \n", Vmp);
+  
+
   
 endfunction;
